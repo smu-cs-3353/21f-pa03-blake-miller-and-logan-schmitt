@@ -153,6 +153,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA03_miller_schmitt.dir/build.make CMakeFiles/PA03_miller_schmitt.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.o: usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.o
+.PHONY : usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.o
+
+# target to build an object file
+usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA03_miller_schmitt.dir/build.make CMakeFiles/PA03_miller_schmitt.dir/usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.o
+.PHONY : usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.o
+
+usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.i: usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.i
+.PHONY : usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.i
+
+# target to preprocess a source file
+usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA03_miller_schmitt.dir/build.make CMakeFiles/PA03_miller_schmitt.dir/usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.i
+.PHONY : usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.i
+
+usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.s: usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.s
+.PHONY : usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.s
+
+# target to generate assembly for a file
+usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA03_miller_schmitt.dir/build.make CMakeFiles/PA03_miller_schmitt.dir/usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.s
+.PHONY : usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.o"
+	@echo "... usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.i"
+	@echo "... usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.s"
 .PHONY : help
 
 

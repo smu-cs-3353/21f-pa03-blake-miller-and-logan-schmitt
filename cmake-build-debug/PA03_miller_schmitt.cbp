@@ -109,6 +109,9 @@
 		<Unit filename="/Users/loganschmitt/Documents/21f-pa03-blake-miller-and-logan-schmitt/src/main.cpp">
 			<Option target="PA03_miller_schmitt"/>
 		</Unit>
+		<Unit filename="/usr/local/Cellar/boost/boost_1_77_0/libs/graph/src/graphml.cpp">
+			<Option target="PA03_miller_schmitt"/>
+		</Unit>
 		<Unit filename="/Users/loganschmitt/Documents/21f-pa03-blake-miller-and-logan-schmitt/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

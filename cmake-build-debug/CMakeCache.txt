@@ -17,10 +17,22 @@
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=/usr/local/lib/cmake/Boost-1.76.0
 
+//Boost graph library (debug)
+Boost_GRAPH_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libboost_graph-mt.dylib
+
 Boost_GRAPH_LIBRARY_RELEASE:STRING=/usr/local/lib/libboost_graph-mt.dylib
 
 //Path to a file.
 Boost_INCLUDE_DIR:PATH=/usr/local/include
+
+//Boost library directory DEBUG
+Boost_LIBRARY_DIR_DEBUG:PATH=/usr/local/lib
+
+//Boost library directory RELEASE
+Boost_LIBRARY_DIR_RELEASE:PATH=/usr/local/lib
+
+//Boost locale library (debug)
+Boost_LOCALE_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libboost_locale-mt.dylib
 
 Boost_LOCALE_LIBRARY_RELEASE:STRING=/usr/local/lib/libboost_locale-mt.dylib
 
@@ -48,8 +60,8 @@ CMAKE_CODEBLOCKS_MAKE_ARGUMENTS:STRING=-j16
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//CXX compiler
-CMAKE_CXX_COMPILER:STRING=/usr/local/Cellar/gcc/9.2.0_3/bin/g++-9
+//No help, variable specified on the command line.
+CMAKE_CXX_COMPILER:UNINITIALIZED=/usr/local/Cellar/gcc/9.2.0_3/bin/g++-9
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -276,6 +288,14 @@ boost_thread_DIR:PATH=/usr/local/lib/cmake/boost_thread-1.76.0
 
 //ADVANCED property for variable: Boost_DIR
 Boost_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_GRAPH_LIBRARY_DEBUG
+Boost_GRAPH_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_GRAPH_LIBRARY_RELEASE
+Boost_GRAPH_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LOCALE_LIBRARY_DEBUG
+Boost_LOCALE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LOCALE_LIBRARY_RELEASE
+Boost_LOCALE_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -428,7 +448,7 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
-FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/local/lib/cmake/Boost-1.76.0/BoostConfig.cmake][cfound components: locale graph ][v1.76.0(1.40)]
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/local/lib/cmake/Boost-1.76.0/BoostConfig.cmake][cfound components: locale graph ][v1.76.0(1.71.0)]
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_chrono_DIR
