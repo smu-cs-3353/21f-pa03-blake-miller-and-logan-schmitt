@@ -4,6 +4,8 @@ cmake-build-debug/
 CMakeLists.txt
 
 # Prerequisites
+*.d
+
 # Compiled Object files
 *.slo
 *.lo
