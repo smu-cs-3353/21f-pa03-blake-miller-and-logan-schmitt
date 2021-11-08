@@ -9,7 +9,7 @@ struct GraphData { string Name; };
 struct VertexProperty { string Name; };
 struct EdgeProperty { string Name; };
 
-using Graph = adjacency_list<setS, vecS, directedS, VertexProperty, EdgeProperty, GraphData>;
+using Graph = adjacency_list<setS, vecS, undirectedS, VertexProperty, EdgeProperty, GraphData>;
 
 int main() {
     dynamic_properties dp(ignore_other_properties);
