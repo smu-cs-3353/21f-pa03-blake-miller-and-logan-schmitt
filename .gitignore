@@ -35,3 +35,4 @@ CMakeLists.txt
 *.exe
 *.out
 *.app
+graph.svg
