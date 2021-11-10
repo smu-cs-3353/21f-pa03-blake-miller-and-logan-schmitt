@@ -29,12 +29,16 @@ void GraphAlgos::write_dot(std::ostream& os, Graph& graph) {
     boost::write_graphviz_dp(os,graph,dp);
 }
 
-//void WriteSVG(const std::string& dot_filename, const std::string& svg_filename){
-//    std::stringstream cmd;
-//    cmd << "dot -Tsvg " << dot_filename << " -o " << svg_filename;
-//    const int error{ std::system(cmd.str().c_str()) };
-//    if (error) {
-//        std::cerr << __func__ << ": warning: command '" << cmd.str()
-//                  << "' resulting in error " << error;
-//    }
-//}
+void GraphAlgos::getShortestPath(Graph &g) {
+    int numVerticies = boost::num_vertices(g);
+    //get vertex iterators
+    std::pair<Graph::vertex_iterator, Graph::vertex_iterator> vertexIterators;
+    vertexIterators = boost::vertices(g);
+    using vd = Graph::vertex_descriptor;
+    //copy all vertex descriptors in graph to a vector
+    std::vector<vd> vdVec(numVerticies);
+    std::copy(vertexIterators.first, vertexIterators.second, std::begin(vdVec));
+    //create predecessor map
+    my_visitor vis;
+    boost::breadth_first_search(g, vdVec[0], boost::vertex_index_map(boost::get(&VertexProperty::node_id, g)).visitor(vis));
+}
