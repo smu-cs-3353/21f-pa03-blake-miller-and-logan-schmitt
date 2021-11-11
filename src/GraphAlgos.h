@@ -17,7 +17,9 @@ public:
     static Graph read_graphml(std::string const& fileName);
     static void write_dot(std::ostream& os, Graph& graph);
     static void getShortestPath(Graph& graph);
-};
+    static void calculateCentrality(Graph &g);
+
+    };
 
 
 #endif //PA03_MILLER_SCHMITT_GRAPHALGOS_H
