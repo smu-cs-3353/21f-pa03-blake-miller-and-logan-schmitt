@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 //define graph type
 struct GraphData {

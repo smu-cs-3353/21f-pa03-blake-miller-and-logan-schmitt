@@ -14,5 +14,6 @@ int main() {
     std::ofstream o2;
     o2.open("centrality.txt");
     GraphAlgos::printEdges(g2, o2);
+    GraphAlgos::girvanNewman(g);
     return 0;
 }

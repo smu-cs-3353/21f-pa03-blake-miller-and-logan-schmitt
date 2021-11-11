@@ -6,7 +6,7 @@
 
 std::map<Vertex, Vertex> GraphAlgos::predecessorMap = std::map<Vertex, Vertex>();
 
-        Graph GraphAlgos::read_graphml(std::string const& fileName){
+Graph GraphAlgos::read_graphml(std::string const& fileName){
     std::ifstream inFile;
     inFile.open(fileName, std::ifstream::in);
     if(!inFile.is_open()){
@@ -80,7 +80,7 @@ void GraphAlgos::initPredecessorMap(std::map<Vertex, Vertex> map){
     GraphAlgos::predecessorMap = map;
 }
 
-void GraphAlgos::printEdges(Graph& g, std::ofstream& os){
+void GraphAlgos::printEdges(Graph& g, std::ostream& os){
     auto edges = getEdges(g);
     for(int i=0; i< edges.size();i++){
         os <<edgeToString(edges[i], g)<<std::endl;
@@ -90,4 +90,27 @@ void GraphAlgos::printEdges(Graph& g, std::ofstream& os){
 void GraphAlgos::getBoostCentrality(Graph &g){
     boost::brandes_betweenness_centrality(g, boost::vertex_index_map(boost::get(&VertexProperty::node_id, g))
             .edge_centrality_map(boost::get(&EdgeProperty::centrality,g)));
+}
+
+Edge GraphAlgos::getEdgeToRemove(Graph& g){
+    getBoostCentrality(g);
+    Edges edges = getEdges(g);
+    float max=0;
+    Edge maxEdge;
+    for(int i=0; i< edges.size();i++){
+        if(g[edges[i]].centrality>max){
+            max=g[edges[i]].centrality;
+            maxEdge = edges[i];
+        }
+    }
+    return maxEdge;
+}
+
+void GraphAlgos::girvanNewman(Graph& g){
+    Edge edgeToRemove = getEdgeToRemove(g);
+    while((g[edgeToRemove].centrality)>1){
+        edgeToRemove = getEdgeToRemove(g);
+        boost::remove_edge(edgeToRemove, g);
+    }
+    printEdges(g, std::cout<<"\n\n\n\n\n");
 }
