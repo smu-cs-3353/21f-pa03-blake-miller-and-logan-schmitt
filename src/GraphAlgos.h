@@ -10,7 +10,6 @@
 class GraphAlgos {
 public:
     static Graph read_graphml(std::string const& fileName);
-    static void write_dot(std::ostream& os, Graph& graph);
     static void getShortestPaths(Vertex& v, Graph& graph);
     static void getAllShortestPaths(Graph& g);
     static std::map<Vertex, Vertex> predecessorMap;
