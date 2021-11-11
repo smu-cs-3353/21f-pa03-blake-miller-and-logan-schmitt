@@ -112,5 +112,5 @@ void GraphAlgos::girvanNewman(Graph& g){
         edgeToRemove = getEdgeToRemove(g);
         boost::remove_edge(edgeToRemove, g);
     }
-    printEdges(g, std::cout<<"\n\n\n\n\n");
+    printEdges(g, std::cout);
 }
