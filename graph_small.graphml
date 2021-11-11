@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="node_id" for="node" attr.name="node_id" attr.type="int" />
+  <key id="value" for="node" attr.name="value" attr.type="int" />
+  <key id="label" for="node" attr.name="label" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="0">
+      <data key="label">A</data>
+      <data key="value">1</data>
+      <data key="node_id">0</data>
+    </node>
+    <node id="1">
+      <data key="label">B</data>
+      <data key="value">1</data>
+      <data key="node_id">1</data>
+    </node>
+    <node id="2">
+      <data key="label">C</data>
+      <data key="value">1</data>
+      <data key="node_id">2</data>
+    </node>
+    <node id="3">
+      <data key="label">D</data>
+      <data key="value">1</data>
+      <data key="node_id">3</data>
+    </node>
+    <edge source="0" target="1" />
+    <edge source="0" target="2" />
+    <edge source="1" target="3" />
+    <edge source="2" target="3" />
+  </graph>
+</graphml>
