@@ -31,11 +31,18 @@ void GraphAlgos::write_dot(std::ostream& os, Graph& graph) {
     boost::write_graphviz_dp(os,graph,dp);
 }
 
-void GraphAlgos::getShortestPath(Graph &g) {
+void GraphAlgos::getAllShortestPaths(Graph &g) {
+    Vertices vertices = getVertices(g);
+    for(int i=0; i<vertices.size(); i++){
+        getShortestPaths(vertices[i], g);
+    }
+    printEdges(g);
+}
+
+void GraphAlgos::getShortestPaths(Vertex& source, Graph &g) {
     Vertices vertices = getVertices(g);
     //create predecessor map
     my_visitor vis;
-    auto source = vertices[0];
     boost::breadth_first_search(g, source,
                                     boost::vertex_index_map(boost::get(&VertexProperty::node_id, g)).visitor(vis));
     for(int i=0; i<vertices.size(); i++) {
@@ -49,10 +56,7 @@ void GraphAlgos::getShortestPath(Graph &g) {
         }
         std::cout<<g[source].label<<std::endl;
     }
-    auto edges = getEdges(g);
-    for(int i=0; i< edges.size();i++){
-        std::cout<<edgeToString(edges[i], g)<<std::endl;
-    }
+
 }
 
 Vertices GraphAlgos::getVertices(Graph& g){
@@ -83,4 +87,11 @@ std::string GraphAlgos::edgeToString(Edge& e, Graph& g){
 
 void GraphAlgos::initPredecessorMap(std::map<Vertex, Vertex> map){
     GraphAlgos::predecessorMap = map;
+}
+
+void GraphAlgos::printEdges(Graph& g){
+    auto edges = getEdges(g);
+    for(int i=0; i< edges.size();i++){
+        std::cout<<edgeToString(edges[i], g)<<std::endl;
+    }
 }

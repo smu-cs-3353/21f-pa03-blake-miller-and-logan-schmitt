@@ -11,14 +11,15 @@ class GraphAlgos {
 public:
     static Graph read_graphml(std::string const& fileName);
     static void write_dot(std::ostream& os, Graph& graph);
-    static void getShortestPath(Graph& graph);
+    static void getShortestPaths(Vertex& v, Graph& graph);
+    static void getAllShortestPaths(Graph& g);
     static std::map<Vertex, Vertex> predecessorMap;
 
 private:
     static Edges getEdges(Graph& g);
     static Vertices getVertices(Graph& g);
     static std::string edgeToString(Edge& e, Graph& g);
-
+    static void printEdges(Graph& g);
     static void initPredecessorMap(std::map<Vertex, Vertex>);
     struct my_visitor : boost::default_bfs_visitor{
         std::map<Vertex, Vertex> pMap;
