@@ -13,6 +13,7 @@ public:
     static void getShortestPaths(Vertex& v, Graph& graph);
     static void getAllShortestPaths(Graph& g);
     static std::map<Vertex, Vertex> predecessorMap;
+    static void dijkstraNodes(Vertex& source, Graph &g);
 
 private:
     static Edges getEdges(Graph& g);
@@ -45,10 +46,12 @@ private:
             //std::cout<<"non-tree"<<std::endl;
         }
         void gray_target(const Edge &e, const Graph &g) const {
-            //std::cout<<"gray"<<std::endl;
+            auto source = boost::source(e,g);
+            std::cout <<g[source].label  << " gray" << std::endl;
         }
         void black_target(const Edge &e, const Graph &g) const {
-
+            auto source = boost::source(e,g);
+            std::cout <<g[source].label  << " black" << std::endl;
         }
         void finish_vertex(const Vertex &s, const Graph &g) const {
             GraphAlgos::initPredecessorMap(pMap);
