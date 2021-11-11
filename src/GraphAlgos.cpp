@@ -23,14 +23,6 @@ std::map<Vertex, Vertex> GraphAlgos::predecessorMap = std::map<Vertex, Vertex>()
     return g;
 }
 
-void GraphAlgos::write_dot(std::ostream& os, Graph& graph) {
-    boost::dynamic_properties dp;
-    dp.property("label", boost::get(&VertexProperty::label, graph));
-    dp.property("value", boost::get(&VertexProperty::value, graph));
-    dp.property("node_id", boost::get(&VertexProperty::node_id, graph));
-    boost::write_graphviz_dp(os,graph,dp);
-}
-
 void GraphAlgos::getAllShortestPaths(Graph &g) {
     Vertices vertices = getVertices(g);
     for(int i=0; i<vertices.size(); i++){
