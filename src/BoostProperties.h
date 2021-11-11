@@ -10,6 +10,12 @@
 #include <boost/graph/graphviz.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/visitors.hpp>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <map>
+
 //define graph type
 struct GraphData {
     std::string Name;
@@ -22,39 +28,16 @@ struct VertexProperty {
 };
 
 struct EdgeProperty {
-    double centrality = 0.0;
+    double mutable centrality = 0.0;
 };
-using Graph = boost::adjacency_list<boost::setS, boost::vecS, boost::undirectedS,
-        VertexProperty, EdgeProperty, GraphData>;
 
-struct my_visitor : boost::default_bfs_visitor{
+using Graph = boost::adjacency_list<boost::setS, boost::vecS, boost::undirectedS, VertexProperty, EdgeProperty, GraphData>;
+using Vertex = Graph::vertex_descriptor;
+using Edge = Graph::edge_descriptor;
+using Vertices = std::vector<Vertex>;
+using Edges = std::vector<Edge>;
+using VertexIterPair = std::pair<Graph::vertex_iterator, Graph::vertex_iterator>;
+using EdgeIterPair = std::pair<Graph::edge_iterator, Graph::edge_iterator>;
 
-    void initialize_vertex(const Graph::vertex_descriptor &s, const Graph &g) const {
-        std::cout << "Initialize: " << g[s].label << std::endl;
-    }
-    void discover_vertex(const Graph::vertex_descriptor &s, const Graph &g) const {
 
-    }
-    void examine_vertex(const Graph::vertex_descriptor &s, const Graph &g) const {
-
-    }
-    void examine_edge(const Graph::edge_descriptor &e, const Graph &g) const {
-        
-    }
-    void tree_edge(const Graph::edge_descriptor &e, const Graph &g) const {
-        std::cout <<g[boost::source(e,g)].label<<"-->"<<g[boost::target(e,g)].label << std::endl;
-    }
-    void non_tree_edge(const Graph::edge_descriptor &e, const Graph &g) const {
-
-    }
-    void gray_target(const Graph::edge_descriptor &e, const Graph &g) const {
-
-    }
-    void black_target(const Graph::edge_descriptor &e, const Graph &g) const {
-
-    }
-    void finish_vertex(const Graph::vertex_descriptor &s, const Graph &g) const {
-
-    }
-};
 #endif //PA03_MILLER_SCHMITT_BOOSTPROPERTIES_H
