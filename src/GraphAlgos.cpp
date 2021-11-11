@@ -28,7 +28,6 @@ void GraphAlgos::getAllShortestPaths(Graph &g) {
     for(int i=0; i<vertices.size(); i++){
         getShortestPaths(vertices[i], g);
     }
-    printEdges(g);
 }
 
 void GraphAlgos::getShortestPaths(Vertex& source, Graph &g) {
@@ -81,9 +80,14 @@ void GraphAlgos::initPredecessorMap(std::map<Vertex, Vertex> map){
     GraphAlgos::predecessorMap = map;
 }
 
-void GraphAlgos::printEdges(Graph& g){
+void GraphAlgos::printEdges(Graph& g, std::ofstream& os){
     auto edges = getEdges(g);
     for(int i=0; i< edges.size();i++){
-        std::cout<<edgeToString(edges[i], g)<<std::endl;
+        os <<edgeToString(edges[i], g)<<std::endl;
     }
+}
+
+void GraphAlgos::getBoostCentrality(Graph &g){
+    boost::brandes_betweenness_centrality(g, boost::vertex_index_map(boost::get(&VertexProperty::node_id, g))
+            .edge_centrality_map(boost::get(&EdgeProperty::centrality,g)));
 }

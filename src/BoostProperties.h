@@ -10,6 +10,7 @@
 #include <boost/graph/graphviz.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/visitors.hpp>
+#include <boost/graph/betweenness_centrality.hpp>
 #include <iostream>
 #include <sstream>
 #include <string>

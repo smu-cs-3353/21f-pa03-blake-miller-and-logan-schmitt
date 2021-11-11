@@ -13,12 +13,12 @@ public:
     static void getShortestPaths(Vertex& v, Graph& graph);
     static void getAllShortestPaths(Graph& g);
     static std::map<Vertex, Vertex> predecessorMap;
-
+    static void getBoostCentrality(Graph &g);
+    static void printEdges(Graph& g, std::ofstream& os);
 private:
     static Edges getEdges(Graph& g);
     static Vertices getVertices(Graph& g);
     static std::string edgeToString(Edge& e, Graph& g);
-    static void printEdges(Graph& g);
     static void initPredecessorMap(std::map<Vertex, Vertex>);
     struct my_visitor : boost::default_bfs_visitor{
         std::map<Vertex, Vertex> pMap;
