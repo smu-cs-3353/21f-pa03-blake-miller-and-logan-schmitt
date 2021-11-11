@@ -32,17 +32,19 @@ void GraphAlgos::write_dot(std::ostream& os, Graph& graph) {
 }
 
 void GraphAlgos::getShortestPath(Graph &g) {
-    Vertices vertexVec = getVertices(g);
+    Vertices vertices = getVertices(g);
     //create predecessor map
     my_visitor vis;
-    boost::breadth_first_search(g, vertexVec[0],
-                                boost::vertex_index_map(boost::get(&VertexProperty::node_id, g)).visitor(vis));
-    auto end = vertexVec[vertexVec.size()-1];
-    auto parent=end;
-    std::cout<<predecessorMap.size()<<std::endl;
-    while(parent!=vertexVec[0]){
-        std::cout<<g[parent].label<<std::endl;
-        parent=predecessorMap[parent];
+    auto source = vertices[0];
+    boost::breadth_first_search(g, source,
+                                    boost::vertex_index_map(boost::get(&VertexProperty::node_id, g)).visitor(vis));
+    for(int i=0; i<vertices.size(); i++) {
+        auto target = vertices[i];
+        while (target != source) {
+            std::cout << g[target].label << "--";
+            target = predecessorMap[target];
+        }
+        std::cout<<g[source].label<<std::endl;
     }
 }
 

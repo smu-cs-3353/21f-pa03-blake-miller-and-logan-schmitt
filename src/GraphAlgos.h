@@ -37,10 +37,9 @@ private:
         void tree_edge(const Edge &e, const Graph &g) {
             Vertex target = boost::target(e,g);
             Vertex source = boost::source(e,g);
-            std::cout <<g[source].label<<"-->"<<g[target].label << std::endl;
+            //std::cout <<g[source].label<<"-->"<<g[target].label << std::endl;
             pMap.insert(std::pair<Vertex, Vertex>(target,source));
-            std::cout<<pMap.size()<<std::endl;
-            GraphAlgos::initPredecessorMap(pMap);
+
         }
         void non_tree_edge(const Edge &e, const Graph &g) {
             //std::cout<<"non-tree"<<std::endl;
@@ -52,7 +51,7 @@ private:
 
         }
         void finish_vertex(const Vertex &s, const Graph &g) const {
-            //std::cout<<"finish"<<std::endl;
+            GraphAlgos::initPredecessorMap(pMap);
         }
     };
 };
