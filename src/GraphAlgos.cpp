@@ -50,11 +50,11 @@ void GraphAlgos::getShortestPaths(Vertex& source, Graph &g) {
         while (target != source) {
             auto updateEdge = boost::edge(target, predecessorMap[target], g).first;
             g[updateEdge].centrality+=1;
-            std::cout << g[target].label << "--";
+            //std::cout << g[target].label << "--";
             target = predecessorMap[target];
 
         }
-        std::cout<<g[source].label<<std::endl;
+        //std::cout<<g[source].label<<std::endl;
     }
 
 }

@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    Graph g = GraphAlgos::read_graphml("../graph_test.graphml");
+    Graph g = GraphAlgos::read_graphml("../graph_small.graphml");
     GraphAlgos::getAllShortestPaths(g);
 
     return 0;
