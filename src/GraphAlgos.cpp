@@ -41,10 +41,17 @@ void GraphAlgos::getShortestPath(Graph &g) {
     for(int i=0; i<vertices.size(); i++) {
         auto target = vertices[i];
         while (target != source) {
+            auto updateEdge = boost::edge(target, predecessorMap[target], g).first;
+            g[updateEdge].centrality+=1;
             std::cout << g[target].label << "--";
             target = predecessorMap[target];
+
         }
         std::cout<<g[source].label<<std::endl;
+    }
+    auto edges = getEdges(g);
+    for(int i=0; i< edges.size();i++){
+        std::cout<<edgeToString(edges[i], g)<<std::endl;
     }
 }
 
