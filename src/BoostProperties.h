@@ -10,6 +10,7 @@
 #include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/visitors.hpp>
 #include <boost/graph/betweenness_centrality.hpp>
+#include <boost/graph/connected_components.hpp>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -27,6 +28,7 @@ struct VertexProperty {
     int value;
     int node_id;
     double mutable centrality = 0.0;
+    int mutable group=0;
 };
 
 struct EdgeProperty {
