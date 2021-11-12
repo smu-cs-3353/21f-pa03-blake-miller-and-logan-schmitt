@@ -77,7 +77,7 @@ Edge GraphAlgos::getEdgeToRemove(Graph& g){
 }
 
 void GraphAlgos::girvanNewman(Graph& g){
-    float tolerance = 2.0f;
+    float tolerance = 7.0f;
     Edge edgeToRemove = getEdgeToRemove(g);
     while((g[edgeToRemove].centrality)>tolerance){
         edgeToRemove = getEdgeToRemove(g);
