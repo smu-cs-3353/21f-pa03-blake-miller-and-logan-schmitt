@@ -84,6 +84,7 @@ void GraphAlgos::printEdges(Graph& g, std::ostream& os){
     auto edges = getEdges(g);
     for(int i=0; i< edges.size();i++){
         os <<edgeToString(edges[i], g)<<std::endl;
+//        std::cout <<edgeToString(edges[i], g)<<std::endl;
     }
 }
 
