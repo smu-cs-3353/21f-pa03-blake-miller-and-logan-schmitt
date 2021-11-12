@@ -4,8 +4,6 @@
 
 #include "GraphAlgos.h"
 
-std::map<Vertex, Vertex> GraphAlgos::predecessorMap = std::map<Vertex, Vertex>();
-
 Graph GraphAlgos::read_graphml(std::string const& fileName){
     std::ifstream inFile;
     inFile.open(fileName, std::ifstream::in);
@@ -21,33 +19,6 @@ Graph GraphAlgos::read_graphml(std::string const& fileName){
     dp.property("node_id", boost::get(&VertexProperty::node_id, g));
     boost::read_graphml(inFile, g, dp);
     return g;
-}
-
-void GraphAlgos::getAllShortestPaths(Graph &g) {
-    Vertices vertices = getVertices(g);
-    for(int i=0; i<vertices.size(); i++){
-        getShortestPaths(vertices[i], g);
-    }
-}
-
-void GraphAlgos::getShortestPaths(Vertex& source, Graph &g) {
-    Vertices vertices = getVertices(g);
-    //create predecessor map
-    my_visitor vis;
-    boost::breadth_first_search(g, source,
-                                    boost::vertex_index_map(boost::get(&VertexProperty::node_id, g)).visitor(vis));
-    for(int i=0; i<vertices.size(); i++) {
-        auto target = vertices[i];
-        while (target != source) {
-            auto updateEdge = boost::edge(target, predecessorMap[target], g).first;
-            g[updateEdge].centrality+=1;
-            //std::cout << g[target].label << "--";
-            target = predecessorMap[target];
-
-        }
-        //std::cout<<g[source].label<<std::endl;
-    }
-
 }
 
 Vertices GraphAlgos::getVertices(Graph& g){
@@ -76,10 +47,6 @@ std::string GraphAlgos::edgeToString(Edge& e, Graph& g){
     return str;
 }
 
-void GraphAlgos::initPredecessorMap(std::map<Vertex, Vertex> map){
-    GraphAlgos::predecessorMap = map;
-}
-
 void GraphAlgos::printEdges(Graph& g, std::ostream& os){
     auto edges = getEdges(g);
     for(int i=0; i< edges.size();i++){
@@ -89,7 +56,10 @@ void GraphAlgos::printEdges(Graph& g, std::ostream& os){
 
 void GraphAlgos::getBoostCentrality(Graph &g){
     boost::brandes_betweenness_centrality(g, boost::vertex_index_map(boost::get(&VertexProperty::node_id, g))
-            .edge_centrality_map(boost::get(&EdgeProperty::centrality,g)));
+    .edge_centrality_map(boost::get(&EdgeProperty::centrality,g)));
+//    brandes_betweenness_centrality(g, boost::centrality_map(boost::get(&VertexProperty::centrality,g)),
+//                                   boost::edge_centrality_map(boost::get(&EdgeProperty::centrality,g)),
+//                                   boost::vertex_index_map(boost::get(&VertexProperty::node_id, g)));
 }
 
 Edge GraphAlgos::getEdgeToRemove(Graph& g){

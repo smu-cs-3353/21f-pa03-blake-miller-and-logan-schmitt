@@ -12,7 +12,6 @@ public:
     static Graph read_graphml(std::string const& fileName);
     static void getShortestPaths(Vertex& v, Graph& graph);
     static void getAllShortestPaths(Graph& g);
-    static std::map<Vertex, Vertex> predecessorMap;
     static void getBoostCentrality(Graph &g);
     static void printEdges(Graph& g, std::ostream& os);
     static Edge getEdgeToRemove(Graph& g);

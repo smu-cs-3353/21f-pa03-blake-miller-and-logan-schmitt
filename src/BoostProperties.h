@@ -10,7 +10,8 @@
 #include <boost/graph/graphviz.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/visitors.hpp>
-#include <boost/graph/betweenness_centrality.hpp>
+//#include <boost/graph/betweenness_centrality.hpp>
+#include "BetweennessCentrality.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -27,6 +28,7 @@ struct VertexProperty {
     std::string label;
     int value;
     int node_id;
+    double mutable centrality = 0.0;
 };
 
 struct EdgeProperty {
