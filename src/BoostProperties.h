@@ -4,14 +4,12 @@
 
 #ifndef PA03_MILLER_SCHMITT_BOOSTPROPERTIES_H
 #define PA03_MILLER_SCHMITT_BOOSTPROPERTIES_H
-
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graphml.hpp>
 #include <boost/graph/graphviz.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/visitors.hpp>
-//#include <boost/graph/betweenness_centrality.hpp>
-#include "BetweennessCentrality.h"
+#include <boost/graph/betweenness_centrality.hpp>
 #include <iostream>
 #include <sstream>
 #include <string>
