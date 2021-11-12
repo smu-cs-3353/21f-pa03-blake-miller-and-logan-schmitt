@@ -4,7 +4,6 @@
 
 #ifndef PA03_MILLER_SCHMITT_BOOSTPROPERTIES_H
 #define PA03_MILLER_SCHMITT_BOOSTPROPERTIES_H
-
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graphml.hpp>
 #include <boost/graph/graphviz.hpp>
@@ -16,6 +15,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 //define graph type
 struct GraphData {
@@ -26,6 +26,7 @@ struct VertexProperty {
     std::string label;
     int value;
     int node_id;
+    double mutable centrality = 0.0;
 };
 
 struct EdgeProperty {
