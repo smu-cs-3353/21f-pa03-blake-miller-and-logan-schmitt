@@ -51,7 +51,7 @@ void GraphAlgos::getShortestPaths(Vertex& source, Graph &g) {
     for(int i=0; i<vertices.size(); i++) {
         auto target = vertices[i];
         while (target != source) {
-            auto updateEdge = boost::edge(target, pr[target], g).first;
+            auto updateEdge = boost::edge(target, predecessorMap[target], g).first;
             g[updateEdge].centrality+=1;
             //std::cout << g[target].label << "--";
             target = pr[target];
@@ -78,25 +78,36 @@ void GraphAlgos::dijkstraNodes(Vertex& source, Graph &g){
                                     .weight_map(boost::make_constant_property<Edge>(1.0)));
 //    }
 
-    std::vector< boost::graph_traits< Graph >::vertex_descriptor > path;
-    boost::graph_traits< Graph >::vertex_descriptor current=source;
 
-    while(current!=vs[0]) {
-        auto updateEdge = boost::edge(current, pr[current], g).first;
-        g[updateEdge].centrality+=1;
-        //std::cout << g[target].label << "--";
-        path.push_back(current);
-        current=pr[current];
+    for(int i=0; i<vs.size(); i++) {
+        auto target = vs[i];
+        while (target != source) {
+            auto updateEdge = boost::edge(target, pr[target], g).first;
+            g[updateEdge].centrality+=1;
+            std::cout << g[target].label << "--";
+            target = pr[target];
+
+        }
+        std::cout<<g[source].label<<std::endl;
     }
-    path.push_back(vs[0]);
+//    std::vector< boost::graph_traits< Graph >::vertex_descriptor > path;
+//    boost::graph_traits< Graph >::vertex_descriptor current=source;
+//    while(current!=pr[0]) {
+//        auto updateEdge = boost::edge(current, pr[current], g).first;
+//        g[updateEdge].centrality+=1;
+//        //std::cout << g[target].label << "--";
+//        path.push_back(current);
+//        current=pr[current];
+//    }
+//    path.push_back(pr[0]);
 
 //This prints the path reversed use reverse_iterator and rbegin/rend
-    std::vector< boost::graph_traits< Graph >::vertex_descriptor >::iterator it;
-    for (it=path.begin(); it != path.end(); ++it) {
-
-        std::cout << vs[*it] << " ";
-    }
-    std::cout << std::endl;
+//    std::vector< boost::graph_traits< Graph >::vertex_descriptor >::iterator it;
+//    for (it=path.begin(); it != path.end(); ++it) {
+//
+//        std::cout << pr[*it] << " ";
+//    }
+//    std::cout << std::endl;
 
 }
 
