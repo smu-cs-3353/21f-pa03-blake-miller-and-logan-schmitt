@@ -77,10 +77,31 @@ Edge GraphAlgos::getEdgeToRemove(Graph& g){
 }
 
 void GraphAlgos::girvanNewman(Graph& g){
+    float tolerance = 7.0f;
     Edge edgeToRemove = getEdgeToRemove(g);
-    while((g[edgeToRemove].centrality)>1){
+    while((g[edgeToRemove].centrality)>tolerance){
         edgeToRemove = getEdgeToRemove(g);
         boost::remove_edge(edgeToRemove, g);
     }
-    printEdges(g, std::cout);
+    GraphAlgos::outputGroups(g);
+}
+
+void GraphAlgos::outputGroups(Graph& g){
+    boost::connected_components(g, boost::get(&VertexProperty::group, g));
+    Vertices verts = getVertices(g);
+    int totalGroups=0;
+    for(int i=0; i<verts.size(); i++){
+        if(g[verts[i]].group>totalGroups){
+            totalGroups = g[verts[i]].group;
+        }
+    }
+    std::cout<<totalGroups<<std::endl;
+    for(int i = 0; i<totalGroups; i++){
+        std::cout<<"Group "<<i<<":"<<std::endl;
+        for(int j=0; j<verts.size(); j++){
+            if(g[verts[j]].group==i){
+                std::cout<<"\t"<<g[verts[j]].label<<std::endl;
+            }
+        }
+    }
 }

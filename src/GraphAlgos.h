@@ -14,6 +14,7 @@ public:
     static void printEdges(Graph& g, std::ostream& os);
     static Edge getEdgeToRemove(Graph& g);
     static void girvanNewman(Graph& g);
+    static void outputGroups(Graph& g);
 private:
     static Edges getEdges(Graph& g);
     static Vertices getVertices(Graph& g);
